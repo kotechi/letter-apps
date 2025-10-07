@@ -12,7 +12,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $siswa = \App\Models\Admin\Siswa::all();
+        $schools = \App\Models\Admin\School::all();
+        return view('admin.dashboard', compact('siswa', 'schools'))->with('success', 'Welcome to Admin Dashboard');
     }
 
     /**
@@ -61,5 +63,9 @@ class AdminController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function setting()
+    {
+        return view('admin.settings');
     }
 }
