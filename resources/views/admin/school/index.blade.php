@@ -16,7 +16,7 @@
             <table id="table" class="min-w-full border border-gray-200 rounded-lg">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Nama Sekolah</th>
                         <th>Alamat</th>
                         <th>Provinsi</th>

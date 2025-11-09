@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Letter Apps</title>
+        <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg"/>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <!-- Font Awesome untuk ikon -->
@@ -68,6 +69,20 @@
                         </a>
                     </li>
                     <li>
+                        <a id="surat" href="{{ route('admin.surats') }}" 
+                        class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 font-medium transition-all duration-200 group {{ request()->routeIs('admin.surats') ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : '' }}">
+                            <i class="fas fa-envelope mr-3 text-lg group-hover:text-blue-600 {{ request()->routeIs('admin.surats') ? 'text-blue-600' : 'text-gray-400' }}"></i>
+                            Surat
+                        </a>
+                    </li>
+                    <li>
+                        <a id="ijasa" href="{{ route('admin.ijasah.index') }}" 
+                        class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 font-medium transition-all duration-200 group {{ request()->routeIs('admin.ijasah') ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : '' }}">
+                            <i class="fas fa-certificate mr-3 text-lg group-hover:text-blue-600 {{ request()->routeIs('admin.ijasah') ? 'text-blue-600' : 'text-gray-400' }}"></i>
+                            Ijasah
+                        </a>
+                    </li>
+                    <li>
                         <a id="settings" href="{{ route('admin.settings') }}" 
                         class="flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 font-medium transition-all duration-200 group {{ request()->routeIs('admin.settings') ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : '' }}">
                             <i class="fas fa-cog mr-3 text-lg group-hover:text-blue-600 {{ request()->routeIs('admin.settings') ? 'text-blue-600' : 'text-gray-400' }}"></i>
@@ -86,10 +101,10 @@
                 <!-- Footer -->
                 <footer class="bg-white py-4 text-center text-sm text-gray-600 mt-8">
                     <div class="max-w-7xl mx-auto px-6">
-                        © {{ date('Y') }} Letter Apps. All rights reserved.
+                        © {{ date('Y') }} Kotechi Apps. All rights reserved.
                     </div>
                 </footer>
-            </div>
+            </div>  
         </main>
         <script>
             document.addEventListener('DOMContentLoaded', function() {

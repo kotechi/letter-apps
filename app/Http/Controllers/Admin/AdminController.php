@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     /**
@@ -52,9 +55,35 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id = null)
     {
-        //
+        // target the provided id or fall back to authenticated user (profile update)
+        $user = $id ? User::find($id) : Auth::user();
+
+        if (! $user) {
+            return redirect()->back()->with('status', 'User not found.');
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+
+        $updateData = [
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+        ];
+
+        if (! empty($validated['password'])) {
+            $updateData['password'] = Hash::make($validated['password']);
+        }
+
+        $user->fill($updateData);
+        $user->save();
+
+        return redirect()->route('admin.settings')->with('success', 'Settings updated successfully.');
     }
 
     /**
@@ -66,6 +95,7 @@ class AdminController extends Controller
     }
     public function setting()
     {
-        return view('admin.settings');
+        $user = auth()->user();
+        return view('admin.settings', compact('user'));
     }
 }

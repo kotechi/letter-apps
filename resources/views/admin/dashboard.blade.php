@@ -28,9 +28,6 @@
 
         <!-- Button to open export modal -->
         <div class="flex items-center justify-between mb-4">
-            <p class="text-center text-sm text-gray-600">
-                You are logged in!
-            </p>
 
             <button id="openExportBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
                 Buat Surat Pindah Sekolah
@@ -44,7 +41,7 @@
 
             <div class="bg-white rounded-lg shadow-lg z-10 w-full max-w-lg p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Buat Surat Pindah Sekolah</h3>
+                    <h3 class="text-2xl text-blue-600 font-semibold">Buat Surat Pindah Sekolah</h3>
                     <button id="closeExportBtn" class="text-gray-600 hover:text-gray-800">&times;</button>
                 </div>
 
@@ -68,8 +65,20 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label class="block text-sm mb-1">Keterangan</label>
-                        <input type="text" name="keterangan" class="w-full border border-blue-600 rounded px-3 py-2">
+                        <label class="block text-sm mb-1">No Surat Asal</label>
+                        <input type="text" name="no_surat_asal" required class="w-full border border-blue-600 rounded px-3 py-2">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">No Surat Keterangan</label>
+                        <input type="number" name="no_surat_keterangan" required class="w-full border border-blue-600 rounded px-3 py-2">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">Nama Kepsek dan Gelar nya</label>
+                        <input type="text" name="nama_kepsek" required class="w-full border border-blue-600 rounded px-3 py-2">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm mb-1">NIP Kepsek</label>
+                        <input type="number" name="nip_kepsek" required class="w-full border border-blue-600 rounded px-3 py-2">
                     </div>
 
                     <div class="flex justify-end">
@@ -110,7 +119,6 @@
             if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
             if (overlay) overlay.addEventListener('click', closeModal);
 
-            // close on Esc
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') closeModal();
             });

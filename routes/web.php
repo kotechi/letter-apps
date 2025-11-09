@@ -7,9 +7,10 @@ use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\SchoolController;
 use App\Http\Controllers\WordController;
 
-Route::get('/', function () {return view('welcome');} )->name('/');
+Route::get('/', function () {return view('auth.login');} )->name('/');
 
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::put('/settings/{id}', [AdminController::class, 'update'])->name('admin.update');
 
     Route::post('/export-word-pindah', [WordController::class, 'export'])->name('export.word.pindah');
 
@@ -31,6 +32,22 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/siswa/{siswa}', [SiswaController::class, 'update'])->name('admin.siswa.update');
     Route::delete('/siswa/{siswa}', [SiswaController::class, 'destroy'])->name('admin.siswa.destroy');
 
+    Route::get('/surat', [\App\Http\Controllers\Admin\SuratController::class, 'index'])->name('admin.surats');
+    Route::get('/surat/{surat}', [\App\Http\Controllers\Admin\SuratController::class, 'show'])->name('admin.surats.show');
+    Route::delete('/surat/{surat}', [\App\Http\Controllers\Admin\SuratController::class, 'destroy'])->name('admin.surats.destroy');
+    Route::delete('/surat', [\App\Http\Controllers\Admin\SuratController::class, 'destroyall'])->name('admin.surats.destroyall');
+    Route::get('/surat/{surat}/edit', [\App\Http\Controllers\Admin\SuratController::class, 'edit'])->name('admin.surats.edit');
+    Route::put('/surat/{surat}', [\App\Http\Controllers\Admin\SuratController::class, 'update'])->name('admin.surats.update');
+    Route::post('/surat/export', [\App\Http\Controllers\Admin\SuratController::class, 'export'])->name('admin.surats.export');
+    Route::get('/surat/{surat}/download/{type}', [\App\Http\Controllers\Admin\SuratController::class, 'download'])->name('admin.surats.download');
+
+    Route::get('/ijasah', [\App\Http\Controllers\Admin\IjasahController::class, 'index'])->name('admin.ijasah.index');
+    Route::get('/ijasah/create', [\App\Http\Controllers\Admin\IjasahController::class, 'create'])->name('admin.ijasah.create');
+    Route::post('/ijasah', [\App\Http\Controllers\Admin\IjasahController::class, 'store'])->name('admin.ijasah.store');
+    Route::get('/ijasah/{ijasah}/edit', [\App\Http\Controllers\Admin\IjasahController::class, 'edit'])->name('admin.ijasah.edit');
+    Route::put('/ijasah/{ijasah}', [\App\Http\Controllers\Admin\IjasahController::class, 'update'])->name('admin.ijasah.update');
+    Route::delete('/ijasah/{ijasah}', [\App\Http\Controllers\Admin\IjasahController::class, 'destroy'])->name('admin.ijasah.destroy');
+    Route::get('/ijasah/{ijasah}', [\App\Http\Controllers\Admin\IjasahController::class, 'show'])->name('admin.ijasah.show');
 
     Route::get('/school', [SchoolController::class, 'index'])->name('admin.school');
     Route::get('/school/create', [SchoolController::class, 'create'])->name('admin.school.create');

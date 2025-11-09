@@ -40,7 +40,10 @@ class WordController extends Controller
             'kota_sekolah_tujuan' => $sekolah->kota,
             'provinsi_sekolah_tujuan' => $sekolah->provinsi,
             'waktu_sekarang' => $waktu_sekarang,
-            'keterangan' => $request->keterangan ? $request->keterangan : '-',
+            'no_surat_asal' => $request->no_surat_asal ? $request->no_surat_asal : '-',
+            'no_surat_keterangan' => $request->no_surat_keterangan ? $request->no_surat_keterangan : '-',
+            'nip_kepsek' => $request->nip_kepsek ? $request->nip_kepsek : '-',
+            'nama_kepsek' => $request->nama_kepsek ? $request->nama_kepsek : '-',
         ];
 
         $files = WordExportService::generateSurat($data);

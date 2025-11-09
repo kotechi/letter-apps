@@ -11,7 +11,7 @@
             <table id="table" class="table table-striped table-bordered w-full">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>

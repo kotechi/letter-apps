@@ -7,7 +7,11 @@ import 'datatables.net-dt/css/dataTables.dataTables.min.css';
 import $ from 'jquery';
 window.$ = $;
 
+$.fn.dataTable.ext.errMode = 'none';
+$(document).ready(function () {
     $('#table').DataTable({
+        
+        errorMode: 'none',
         language: {
             paginate: {
                 previous: '‹',
@@ -15,6 +19,9 @@ window.$ = $;
             }
         }
     });
+
+});
+
 
 window.Toast = Swal.mixin({
     toast: true,

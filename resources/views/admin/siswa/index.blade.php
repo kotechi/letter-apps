@@ -12,7 +12,7 @@
             <table id="table" class="table table-striped table-bordered w-full">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Nama</th>
                         <th>Kelas</th>
                         <th>NISN</th>
