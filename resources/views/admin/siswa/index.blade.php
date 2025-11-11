@@ -1,4 +1,3 @@
-
 <x-layouts.app title="Siswa">
     <div class="w-full ml-2 bg-white rounded-sm shadow-lg p-8">
         <div class="flex justify-between items-center mb-6">
@@ -10,9 +9,9 @@
 
         <div class="overflow-x-auto">
             <table id="table" class="table table-striped table-bordered w-full">
-                <thead class="bg-gray-50">
+                <thead>
                     <tr>
-                        <th>id</th>
+                        <th>ID</th>
                         <th>Nama</th>
                         <th>Kelas</th>
                         <th>NISN</th>
@@ -40,8 +39,14 @@
                             </td>
                         </tr>
                     @empty
-                        <tr>
-                            <td colspan="7" class="text-center text-gray-500 py-6">No siswa found.</td>
+                        <tr class="empty-row">
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                     @endforelse
                 </tbody>

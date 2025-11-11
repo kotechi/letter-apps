@@ -15,6 +15,7 @@ class SuratController extends Controller
 
     public function index(Request $request)
     {
+        
         $query = Surat::query();
         $schools = School::all();
         $siswa = Siswa::all();
