@@ -38,7 +38,7 @@
                 <div class="text-xs text-gray-400 mt-1">Menampilkan {{ $currentCount }} item pada halaman ini</div>
             </div>
 
-            <div class="p-4 bg-white rounded-lg shadow-sm border">
+            {{-- <div class="p-4 bg-white rounded-lg shadow-sm border">
                 <div class="text-xs text-gray-500">Filter & Cari</div>
                 <div class="mt-2">
                     <form id="filterForm" method="GET" action="{{ route('admin.surats') }}" class="flex gap-2">
@@ -61,7 +61,7 @@
                         </select>
                     </form>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Modal: Export Form -->
@@ -133,18 +133,17 @@
         </div>
 
         <!-- Tabel Surat -->
-        <div class="overflow-x-auto bg-white border rounded-lg shadow-sm">
-            <table id="table" class="min-w-full divide-y divide-gray-200 text-sm">
+            <table id="my-table" class="min-w-full custom-table divide-y divide-gray-200 text-sm">
                 <thead class="bg-blue-50 text-blue-700 min-w-full">
                     <tr>
-                        <th class="py-3 px-3 text-left">#</th>
-                        <th class="py-3 px-3 text-left">Tanggal Surat</th>
-                        <th class="py-3 px-3 text-left">Nama Siswa</th>
-                        <th class="py-3 px-3 text-left">Kelas</th>
-                        <th class="py-3 px-3 text-left">NISN</th>
-                        <th class="py-3 px-3 text-left">Sekolah Tujuan</th>
-                        <th class="py-3 px-3 text-left">No Surat</th>
-                        <th class="py-3 px-3 text-center">Aksi</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">#</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">Tanggal Surat</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">Nama Siswa</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">Kelas</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">NISN</th>
+                        <th data-sortable="true" class="py-3 px-3 text-left">Sekolah Tujuan</th>
+                        {{-- <th data-sortable="true" class="py-3 px-3 text-left">No Surat</th> --}}
+                        <th data-sortable="true" class="py-3 px-3 text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-100">
@@ -156,7 +155,7 @@
                             <td class="py-3 px-3">{{ $surat->kelas }}</td>
                             <td class="py-3 px-3">{{ $surat->nisn }}</td>
                             <td class="py-3 px-3">{{ $surat->nama_sekolah_tujuan }}</td>
-                            <td class="py-3 px-3">{{ $surat->no_surat_keterangan ?? '-' }}</td>
+                            {{-- <td class="py-3 px-3">{{ $surat->no_surat_keterangan ?? '-' }}</td> --}}
                             <td class="py-3 px-3 text-center space-x-1">
                                 <a href="{{ route('admin.surats.show', $surat) }}"
                                    class="inline-flex items-center gap-1 text-green-600 border border-green-500 px-2 py-1 rounded hover:bg-green-600 hover:text-white transition">
@@ -204,7 +203,6 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
 
         <!-- Pagination -->
         <div class="mt-4 flex items-center justify-between">

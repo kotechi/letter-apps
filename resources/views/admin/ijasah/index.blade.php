@@ -1,9 +1,9 @@
 <x-layouts.app title="Ijasah">
     <div class="w-full ml-2 bg-white rounded-sm shadow-lg p-8">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-blue-600">Data Ijasah</h2>
+            <h2 class="text-2xl font-bold text-blue-600">Data izasah</h2>
             <a href="{{ route('admin.ijasah.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                Tambah Ijasah
+                Tambah izasah
             </a>
         </div>
 
@@ -14,15 +14,15 @@
         @endif
 
         <div class="overflow-x-auto">
-            <table id="table" class="table table-striped table-bordered w-full">
+            <table id="my-table" class="custom-table w-full">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th>ID</th>
-                        <th>Nama</th>
-                        <th>Asal Sekolah</th>
-                        <th>Tanggal Masuk</th>
-                        <th>Keterangan</th>
-                        <th>Actions</th>
+                        <th data-sortable="true">ID</th>
+                        <th data-sortable="true">Nama</th>
+                        <th data-sortable="true">Asal Sekolah</th>
+                        <th data-sortable="true">Tanggal Masuk</th>
+                        <th data-sortable="true">Keterangan</th>
+                        <th data-sortable="true">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center text-gray-500 py-6">Tidak ada data ijasah.</td>
+                            <td colspan="6" class="text-center text-gray-500 py-6">Tidak ada data izasah.</td>
                         </tr>
                     @endforelse
                 </tbody>

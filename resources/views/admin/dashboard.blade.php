@@ -29,9 +29,9 @@
         <!-- Button to open export modal -->
         <div class="flex items-center justify-between mb-4">
 
-            <button id="openExportBtn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            <a href="{{  route('admin.surats') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
                 Buat Surat Pindah Sekolah
-            </button>
+            </a>
         </div>
 
         <!-- Modal: Export Form -->
@@ -44,7 +44,7 @@
                     <h3 class="text-2xl text-blue-600 font-semibold">Buat Surat Pindah Sekolah</h3>
                     <button id="closeExportBtn" class="text-gray-600 hover:text-gray-800">&times;</button>
                 </div>
-
+{{-- 
                 <form method="POST" action="{{ route('export.word.pindah') }}">
                     @csrf
                     <div class="mb-4">
@@ -85,7 +85,7 @@
                         <button type="button" id="cancelExport" class="mr-2 px-4 py-2 rounded border">Cancel</button>
                         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Buat Surat</button>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
 

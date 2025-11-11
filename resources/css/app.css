@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-@import 'datatables.net-dt/css/dataTables.dataTables.min.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -12,126 +11,196 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* ==== Custom Tailwind + DataTables Modern ==== */
-.dataTables_wrapper {
-  @apply text-sm text-gray-700;
+/* ==== Custom Table Styling ==== */
+
+/* Table wrapper */
+.table-wrapper {
+    @apply w-full;
 }
 
-/* Header table */
-.dataTables_wrapper .dataTables_scrollHead thead th,
-.dataTables_wrapper table.dataTable thead th {
-  @apply bg-blue-50 text-blue-700 font-semibold text-sm uppercase tracking-wide;
-  padding: 12px 16px !important;
-  text-align: left !important;
+/* Table base */
+.custom-table {
+    @apply w-full border-collapse bg-white rounded-xl shadow-sm overflow-hidden;
+    border-spacing: 0;
 }
 
-/* Body cells */
-.dataTables_wrapper table.dataTable tbody td {
-  padding: 12px 16px !important;
-  vertical-align: middle !important;
+/* Table header */
+.custom-table thead {
+    @apply bg-gradient-to-r from-blue-50 to-blue-100;
 }
 
-/* Row hover & zebra */
-table.dataTable tbody tr {
-  @apply transition-all duration-150;
-}
-table.dataTable tbody tr:nth-child(even) {
-  @apply bg-gray-50;
-}
-table.dataTable tbody tr:hover {
-  @apply bg-blue-50/50;
+.custom-table thead th {
+    @apply text-left text-sm font-semibold text-blue-700 uppercase tracking-wide;
+    padding: 16px 20px !important;
+    border-bottom: 2px solid #3b82f6;
+    white-space: nowrap;
 }
 
-/* === SEARCH BAR STYLING === */
-.dataTables_wrapper .dataTables_filter {
-  @apply mb-0;
-}
-.dataTables_wrapper .dataTables_filter label {
-  @apply flex items-center gap-2 m-0;
-}
-.dataTables_wrapper .dataTables_filter input {
-  @apply border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all;
-  width: 300px;
-}
-.dataTables_wrapper .dataTables_filter input::placeholder {
-  @apply text-gray-400;
+.custom-table thead th:first-child {
+    @apply rounded-tl-xl;
 }
 
-/* === LENGTH MENU STYLING === */
-.dataTables_wrapper .dataTables_length {
-  @apply mb-0;
-}
-.dataTables_wrapper .dataTables_length label {
-  @apply flex items-center gap-2 m-0 text-sm text-gray-700;
-}
-.dataTables_wrapper .dataTables_length select {
-  @apply border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition bg-white;
-  min-width: 70px;
+.custom-table thead th:last-child {
+    @apply rounded-tr-xl;
 }
 
-/* === INFO TEXT STYLING === */
-.dataTables_wrapper .dataTables_info {
-  @apply text-sm text-gray-600 font-medium;
+/* Sortable header hover effect */
+.custom-table thead th.cursor-pointer:hover {
+    @apply bg-blue-200;
 }
 
-/* === PAGINATION STYLING === */
-.dataTables_wrapper .dataTables_paginate {
-  @apply flex items-center gap-1;
+/* Table body */
+.custom-table tbody tr {
+    @apply transition-all duration-200 border-b border-gray-100;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  @apply border-0 text-gray-700 px-3 py-2 rounded-lg bg-transparent hover:bg-blue-50 hover:text-blue-600 transition-all text-sm font-medium min-w-[40px] text-center;
-  margin: 0 !important;
+.custom-table tbody tr:nth-child(even) {
+    @apply bg-gray-50/50;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-  @apply bg-blue-600 text-white shadow-sm;
+.custom-table tbody tr:hover:not(.empty-state) {
+    @apply bg-blue-50 shadow-sm;
+    transform: scale(1.001);
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  @apply bg-blue-700 text-white;
+.custom-table tbody td {
+    @apply text-sm text-gray-700;
+    padding: 14px 20px !important;
+    vertical-align: middle;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
-  @apply text-gray-300 cursor-not-allowed;
+/* Empty state styling */
+.custom-table tbody tr.empty-state {
+    @apply bg-white;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
-  @apply bg-transparent text-gray-300;
+.custom-table tbody tr.empty-state:hover {
+    @apply bg-white shadow-none;
+    transform: none;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.previous,
-.dataTables_wrapper .dataTables_paginate .paginate_button.next {
-  @apply font-bold text-base;
+.custom-table tbody tr.empty-state td {
+    @apply text-gray-500;
 }
 
-/* Table border & layout */
-.dataTables_wrapper table.dataTable {
-  @apply border border-gray-200 rounded-lg shadow-sm overflow-hidden;
-  width: 100% !important;
-  table-layout: auto !important;
+/* Pagination */
+.pagination-btn {
+    @apply border-0 text-gray-700 px-3 py-2 rounded-lg bg-white hover:bg-blue-50 hover:text-blue-600 transition-all text-sm font-medium min-w-[40px] text-center shadow-sm;
+    margin: 0 2px;
 }
 
-/* Empty row styling */
-table.dataTable tbody tr.empty-row {
-  @apply bg-gray-50 text-center text-gray-500;
+.pagination-btn.active {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-md;
 }
 
-table.dataTable tbody tr.empty-row:hover {
-  @apply bg-gray-50 !important;
+.pagination-btn.active:hover {
+    @apply from-blue-700 to-blue-800 text-white;
 }
 
-table.dataTable tbody tr.empty-row td {
-  @apply italic;
+.pagination-btn.disabled {
+    @apply text-gray-300 cursor-not-allowed bg-gray-50 shadow-none;
 }
 
-/* Empty table message */
-.dataTables_empty {
-  @apply py-12 text-center text-gray-500;
+.pagination-btn.disabled:hover {
+    @apply bg-gray-50 text-gray-300;
 }
-.dataTables_empty::before {
-  content: "📭";
-  display: block;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+
+.pagination-dots {
+    @apply px-2 text-gray-400;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .custom-table {
+        @apply text-sm;
+    }
+
+    .custom-table thead th,
+    .custom-table tbody td {
+        padding: 10px 12px !important;
+    }
+
+    .custom-table thead th {
+        @apply text-xs;
+    }
+
+    .pagination-btn {
+        @apply px-2 py-1 min-w-[36px] text-xs;
+    }
+}
+
+/* Scrollable table on mobile */
+@media (max-width: 640px) {
+    .table-wrapper {
+        @apply overflow-x-auto -mx-4 px-4;
+    }
+
+    .custom-table {
+        @apply min-w-[640px];
+    }
+}
+
+/* Action buttons in table */
+.custom-table .btn-action {
+    @apply inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium rounded-lg transition-all duration-200;
+}
+
+.custom-table .btn-edit {
+    @apply bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:shadow;
+}
+
+.custom-table .btn-delete {
+    @apply bg-red-500 text-white hover:bg-red-600 shadow-sm hover:shadow;
+}
+
+.custom-table .btn-view {
+    @apply bg-green-500 text-white hover:bg-green-600 shadow-sm hover:shadow;
+}
+
+/* Badge styling in table */
+.custom-table .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+}
+
+.custom-table .badge-success {
+    @apply bg-green-100 text-green-800;
+}
+
+.custom-table .badge-danger {
+    @apply bg-red-100 text-red-800;
+}
+
+.custom-table .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+}
+
+.custom-table .badge-info {
+    @apply bg-blue-100 text-blue-800;
+}
+
+/* Sort icon animation */
+.sort-icon {
+    @apply transition-all duration-200;
+}
+
+.custom-table thead th:hover .sort-icon {
+    @apply scale-110;
+}
+
+/* Loading state (optional) */
+.table-loading {
+    @apply relative;
+}
+
+.table-loading::after {
+    content: '';
+    @apply absolute inset-0 bg-white flex items-center justify-center;
+    opacity: 0.75;
+}
+
+/* Search and filter inputs focus state */
+input:focus,
+select:focus {
+    @apply ring-2 ring-blue-500;
+    opacity: 0.5;
 }

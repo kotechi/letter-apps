@@ -13,15 +13,15 @@
         @endif
 
         <div class="overflow-x-auto">
-            <table id="table" class="min-w-full border border-gray-200 rounded-lg">
+            <table id="my-table" class="custom-table min-w-full border border-gray-200 rounded-lg">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th>id</th>
-                        <th>Nama Sekolah</th>
-                        <th>Alamat</th>
-                        <th>Provinsi</th>
-                        <th>Kota</th>
-                        <th>Actions</th>
+                        <th data-sortable="true">id</th>
+                        <th data-sortable="true">Nama Sekolah</th>
+                        <th data-sortable="true">Alamat</th>
+                        <th data-sortable="true">Provinsi</th>
+                        <th data-sortable="true">Kota</th>
+                        <th data-sortable="true">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,10 +50,8 @@
                             </tr>
                         @endforeach
                     @else
-                        <tr>
-                            <td colspan="6" class="text-center text-gray-500 py-6">
-                                No schools found.
-                            </td>
+                        <tr class="empty-state">
+                            <td colspan="5" class="text-center text-gray-500 py-6">No schools found.</td>
                         </tr>
                     @endif
                 </tbody>

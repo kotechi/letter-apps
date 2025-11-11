@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nis')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
-            $table->enum('jenis_kelamin')->nullable();
+            $table->string('jenis_kelamin')->nullable();
             
             $table->string('nama_sekolah_tujuan');
             $table->text('alamat_sekolah_tujuan')->nullable();
@@ -47,7 +47,6 @@ return new class extends Migration
             // Indexes
             $table->index('siswa_id');
             $table->index('sekolah_id');
-            $table->index('status');
             $table->index('tanggal_surat');
         });
     }

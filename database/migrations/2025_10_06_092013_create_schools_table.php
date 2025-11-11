@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('kota');
             $table->string('provinsi');
+            $table->string('npsn')->nullable()->unique();
             $table->timestamps();
         });
     }

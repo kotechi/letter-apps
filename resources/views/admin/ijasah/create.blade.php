@@ -1,6 +1,6 @@
-<x-layouts.app title="Tambah Ijasah">
+<x-layouts.app title="Tambah izasah">
     <div class="w-full ml-2 bg-white rounded-sm shadow-lg p-8">
-        <h2 class="text-2xl font-bold text-blue-600 mb-6">Tambah Data Ijasah</h2>
+        <h2 class="text-2xl font-bold text-blue-600 mb-6">Tambah Data izasah</h2>
 
         @if ($errors->any())
             <div class="bg-red-100 text-red-800 p-2 rounded mb-4">

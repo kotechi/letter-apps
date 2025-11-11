@@ -1,7 +1,7 @@
-<x-layouts.app title="Detail Ijasah">
+<x-layouts.app title="Detail izasah">
     <div class="w-full ml-2 bg-white rounded-sm shadow-lg p-8">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold text-blue-600">Detail Data Ijasah</h2>
+            <h2 class="text-2xl font-bold text-blue-600">Detail Data izasah</h2>
             <a href="{{ route('admin.ijasah.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
                 Kembali
             </a>
