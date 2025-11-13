@@ -3,64 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letter Apps</title>
+    <title>Daftar - Letter Apps</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-gray-100 flex flex-col">
-    <main class="flex-grow flex items-center justify-center">
-        <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-            <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen flex items-center justify-center p-4">
+    
+    <!-- Background Decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+    </div>
 
-            <form method="POST" action="{{ route('register') }}" class="space-y-4">
-                @csrf
-
-                <div>
-                    <label for="name" class="block text-sm font-medium">Name</label>
-                    <input id="name" name="name" type="text" value="{{ old('name') }}" required autofocus
-                        class="w-full border-gray-300 rounded-lg mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                    @error('name')
-                        <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
-                    @enderror
+    <div class="w-full max-w-6xl mx-auto relative z-10">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
+            
+            <!-- Left Side - Branding -->
+            <div class="bg-gradient-to-br from-blue-600 to-blue-800 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-overlay filter blur-2xl opacity-30"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-400 rounded-full mix-blend-overlay filter blur-2xl opacity-30"></div>
+                
+                <div class="relative z-10">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-3 mb-8">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
+                            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17.25S6.5 28 12 28s10-4.745 10-10.75S17.5 6.253 12 6.253z"></path>
+                            </svg>
+                        </div>
+                        <h1 class="text-3xl font-bold">Letter Apps</h1>
+                    </div>
+                    
+                    <h2 class="text-4xl font-bold mb-4 leading-tight">Mulai Kelola Sekarang</h2>
+                    <p class="text-blue-100 text-lg mb-8">Bergabunglah dengan ribuan sekolah yang telah mempercayai Letter Apps untuk mengelola surat pindah dan data pendidikan mereka.</p>
+                    
+                    <!-- Benefits -->
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Proses Cepat</h3>
+                                <p class="text-blue-100 text-sm">Tata cara pendaftaran yang mudah hanya dalam beberapa menit</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Keamanan Terjamin</h3>
+                                <p class="text-blue-100 text-sm">Data Anda dilindungi dengan enkripsi tingkat enterprise</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5-4a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Dukungan Penuh</h3>
+                                <p class="text-blue-100 text-sm">Tim support siap membantu Anda kapan saja</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div>
-                    <label for="email" class="block text-sm font-medium">Email</label>
-                    <input id="email" name="email" type="email" value="{{ old('email') }}" required
-                        class="w-full border-gray-300 rounded-lg mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                    @error('email')
-                        <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
-                    @enderror
+                
+                <div class="relative z-10 text-blue-100 text-sm">
+                    <p>&copy; {{ date('Y') }} Letter Apps. All rights reserved.</p>
                 </div>
+            </div>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium">Password</label>
-                    <input id="password" name="password" type="password" required
-                        class="w-full border-gray-300 rounded-lg mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                    @error('password')
-                        <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
-                    @enderror
+            <!-- Right Side - Register Form -->
+            <div class="p-12 flex flex-col justify-center">
+                <div class="max-w-md mx-auto w-full">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Daftar Akun</h2>
+                    <p class="text-gray-600 mb-8">Buat akun baru untuk mulai menggunakan Letter Apps</p>
+
+                    <form method="POST" action="{{ route('register') }}" class="space-y-5">
+                        @csrf
+
+                        <!-- Name Field -->
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                </div>
+                                <input 
+                                    id="name" 
+                                    name="name" 
+                                    type="text" 
+                                    value="{{ old('name') }}" 
+                                    required 
+                                    autofocus
+                                    class="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 outline-none @error('name') border-red-500 @enderror"
+                                    placeholder="Nama lengkap Anda"
+                                >
+                            </div>
+                            @error('name')
+                            <p class="mt-2 text-sm text-red-600 flex items-center space-x-1">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>{{ $message }}</span>
+                            </p>
+                            @enderror
+                        </div>
+
+                        <!-- Email Field -->
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Alamat Email</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <input 
+                                    id="email" 
+                                    name="email" 
+                                    type="email" 
+                                    value="{{ old('email') }}" 
+                                    required
+                                    class="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 outline-none @error('email') border-red-500 @enderror"
+                                    placeholder="anda@contoh.com"
+                                >
+                            </div>
+                            @error('email')
+                            <p class="mt-2 text-sm text-red-600 flex items-center space-x-1">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>{{ $message }}</span>
+                            </p>
+                            @enderror
+                        </div>
+
+                        <!-- Password Field -->
+                        <div>
+                            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Kata Sandi</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                </div>
+                                <input 
+                                    id="password" 
+                                    name="password" 
+                                    type="password" 
+                                    required
+                                    class="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 outline-none @error('password') border-red-500 @enderror"
+                                    placeholder="••••••••"
+                                >
+                            </div>
+                            @error('password')
+                            <p class="mt-2 text-sm text-red-600 flex items-center space-x-1">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>{{ $message }}</span>
+                            </p>
+                            @enderror
+                        </div>
+
+                        <!-- Password Confirmation Field -->
+                        <div>
+                            <label for="password_confirmation" class="block text-sm font-semibold text-gray-700 mb-2">Konfirmasi Kata Sandi</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                </div>
+                                <input 
+                                    id="password_confirmation" 
+                                    name="password_confirmation" 
+                                    type="password" 
+                                    required
+                                    class="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 outline-none"
+                                    placeholder="••••••••"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button 
+                            type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 mt-6"
+                        >
+                            <span>Daftar Sekarang</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Login Link -->
+                        <div class="text-center pt-4 border-t border-gray-200">
+                            <p class="text-gray-600">
+                                Sudah punya akun? 
+                                <a href="{{ route('login') }}" class="font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                                    Masuk di sini
+                                </a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
+            </div>
 
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium">Confirm Password</label>
-                    <input id="password_confirmation" name="password_confirmation" type="password" required
-                        class="w-full border-gray-300 rounded-lg mt-1 p-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-
-                <button type="submit"
-                    class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
-                    Register
-                </button>
-
-                <p class="text-center text-sm text-gray-600 mt-4">
-                    Already have an account?
-                    <a href="{{ route('login') }}" class="text-indigo-600 hover:underline">Login</a>
-                </p>
-            </form>
         </div>
-    </main>
-    <footer class="bg-gray-200 text-center py-3 text-sm text-gray-600 mt-4">
-        © {{ date('Y') }} Letter Apps. All rights reserved.
-    </footer>
+    </div>
+
+    <style>
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
 </body>
 </html>

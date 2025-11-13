@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Letter Apps</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen flex items-center justify-center p-4">
@@ -29,48 +30,48 @@
                     <div class="flex items-center space-x-3 mb-8">
                         <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg">
                             <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17.25S6.5 28 12 28s10-4.745 10-10.75S17.5 6.253 12 6.253z"></path>
                             </svg>
                         </div>
                         <h1 class="text-3xl font-bold">Letter Apps</h1>
                     </div>
                     
-                    <h2 class="text-4xl font-bold mb-4 leading-tight">Welcome Back!</h2>
-                    <p class="text-blue-100 text-lg mb-8">Sign in to continue to your account and manage your letters efficiently.</p>
+                    <h2 class="text-4xl font-bold mb-4 leading-tight">Kelola Surat Pindah dengan Mudah</h2>
+                    <p class="text-blue-100 text-lg mb-8">Platform terpadu untuk mengelola surat pindah sekolah, data sekolah, dan dokumen ijasah dengan efisien dan aman.</p>
                     
                     <!-- Features -->
                     <div class="space-y-4">
                         <div class="flex items-start space-x-3">
                             <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Secure & Reliable</h3>
-                                <p class="text-blue-100 text-sm">Your data is protected with enterprise-grade security</p>
+                                <h3 class="font-semibold text-lg">Surat Pindah Otomatis</h3>
+                                <p class="text-blue-100 text-sm">Buat dan kelola surat pindah sekolah dengan template siap pakai</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
                             <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Fast & Efficient</h3>
-                                <p class="text-blue-100 text-sm">Manage your correspondence in seconds</p>
+                                <h3 class="font-semibold text-lg">Data Sekolah Terstruktur</h3>
+                                <p class="text-blue-100 text-sm">Kelola profil siswa dan informasi sekolah dengan database terpadu</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
                             <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">24/7 Access</h3>
-                                <p class="text-blue-100 text-sm">Access your letters anytime, anywhere</p>
+                                <h3 class="font-semibold text-lg">Arsip Ijasah Digital</h3>
+                                <p class="text-blue-100 text-sm">Simpan dan akses dokumen ijasah dengan aman 24/7</p>
                             </div>
                         </div>
                     </div>
@@ -84,8 +85,8 @@
             <!-- Right Side - Login Form -->
             <div class="p-12 flex flex-col justify-center">
                 <div class="max-w-md mx-auto w-full">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Sign In</h2>
-                    <p class="text-gray-600 mb-8">Enter your credentials to access your account</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Masuk</h2>
+                    <p class="text-gray-600 mb-8">Masukkan kredensial Anda untuk mengakses akun</p>
 
                     @if (session('status'))
                     <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-700 p-4 rounded-lg mb-6 flex items-start space-x-3">
@@ -101,11 +102,11 @@
 
                         <!-- Email Field -->
                         <div>
-                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Alamat Email</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
                                 <input 
@@ -116,7 +117,7 @@
                                     required 
                                     autofocus
                                     class="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 outline-none @error('email') border-red-500 @enderror"
-                                    placeholder="you@example.com"
+                                    placeholder="anda@contoh.com"
                                 >
                             </div>
                             @error('email')
@@ -131,7 +132,7 @@
 
                         <!-- Password Field -->
                         <div>
-                            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+                            <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Kata Sandi</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                                     <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +167,7 @@
                                     id="remember"
                                     class="w-4 h-4 text-blue-600 border-2 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer"
                                 >
-                                <span class="text-sm text-gray-700 group-hover:text-blue-600 transition-colors">Remember me</span>
+                                <span class="text-sm text-gray-700 group-hover:text-blue-600 transition-colors">Ingat saya</span>
                             </label>
                         </div>
 
@@ -175,7 +176,7 @@
                             type="submit" 
                             class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2"
                         >
-                            <span>Sign In</span>
+                            <span>Masuk</span>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                             </svg>
@@ -184,9 +185,9 @@
                         <!-- Register Link -->
                         <div class="text-center pt-4 border-t border-gray-200">
                             <p class="text-gray-600">
-                                Don't have an account? 
+                                Belum punya akun? 
                                 <a href="{{ route('register') }}" class="font-semibold text-blue-600 hover:text-blue-700 transition-colors">
-                                    Create one now
+                                    Daftar sekarang
                                 </a>
                             </p>
                         </div>
