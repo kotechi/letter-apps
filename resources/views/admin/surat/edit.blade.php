@@ -163,6 +163,12 @@
                                value="{{ old('nip_kepsek', $surat->nip_kepsek) }}" 
                                class="w-full border border-blue-600 p-2 rounded">
                     </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Jabatan Pejabat</label>
+                        <input type="text" name="jabatan_pejabat" 
+                               value="{{ old('jabatan_pejabat', $surat->jabatan_pejabat) }}" 
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
                 </div>
             </div>
 

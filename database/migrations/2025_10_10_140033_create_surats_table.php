@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('asal_sekolah_id')->nullable()->constrained('schools')->onDelete('set null');
             
             $table->string('nama');
+            $table->string('jabatan_pejabat')->nullable();
             $table->string('kelas')->nullable();
             $table->string('nisn')->nullable();
             $table->string('nis')->nullable();

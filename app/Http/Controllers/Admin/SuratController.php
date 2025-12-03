@@ -133,6 +133,7 @@ class SuratController extends Controller
             'no_surat_keterangan' => $request->no_surat_keterangan ? $request->no_surat_keterangan : '-',
             'nip_kepsek' => $request->nip_kepsek ? $request->nip_kepsek : '-',
             'nama_kepsek' => $request->nama_kepsek ? $request->nama_kepsek : '-',
+            'jabatan_pejabat' => $request->jabatan_pejabat ? $request->jabatan_pejabat : '-',
         ];
 
         $files = WordExportService::generateSurat($data);
@@ -188,6 +189,7 @@ class SuratController extends Controller
             'no_surat_keterangan' => $request->no_surat_keterangan ?: null,
             'nip_kepsek' => $request->nip_kepsek ?: null,
             'nama_kepsek' => $request->nama_kepsek ?: null,
+            'jabatan_pejabat' => $request->jabatan_pejabat ?: null,
             'tanggal_surat' => now(),
             
             // File paths

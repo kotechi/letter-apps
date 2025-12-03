@@ -119,6 +119,11 @@
                         </div>
                     </div>
 
+                    <div>
+                        <label class="block text-sm mb-1">Jabatan Pejabat</label>
+                        <input type="text" name="jabatan_pejabat" class="w-full border border-blue-600 rounded px-3 py-2" placeholder="Misal: Kepala Sekolah">
+                    </div>
+
                     <div class="flex justify-end gap-2">
                         <button type="button" id="cancelExport" class="px-4 py-2 rounded border">Batal</button>
                         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Buat Surat</button>

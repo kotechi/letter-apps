@@ -108,6 +108,10 @@
                         <label class="block text-sm font-medium text-gray-600">NIP</label>
                         <p class="text-gray-800">{{ $surat->nip_kepsek ?? '-' }}</p>
                     </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600">Jabatan Pejabat</label>
+                        <p class="text-gray-800">{{ $surat->jabatan_pejabat ?? '-' }}</p>
+                    </div>
                 </div>
             </div>
 
