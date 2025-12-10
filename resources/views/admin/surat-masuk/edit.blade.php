@@ -1,0 +1,283 @@
+<x-layouts.app title="Edit Surat Masuk">
+    <div class="w-full ml-2 bg-white rounded-sm shadow-lg p-8">
+        <h2 class="text-2xl font-bold mb-6 text-blue-600">Edit Surat Masuk</h2>
+
+        @if ($errors->any())
+            <div class="bg-red-100 text-red-800 p-2 rounded mb-4">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $err)
+                        <li>{{ $err }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ route('admin.surat-masuk.update', $suratMasuk) }}" method="POST" class="space-y-6" id="formSuratMasuk">
+            @csrf
+            @method('PUT')
+
+            {{-- Informasi Surat --}}
+            <div class="border-b border-gray-200 pb-4">
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">Informasi Surat</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tanggal Masehi <span class="text-red-500">*</span></label>
+                        <input type="date" name="tanggal_masehi" 
+                               value="{{ old('tanggal_masehi', $suratMasuk->tanggal_masehi->format('Y-m-d')) }}" 
+                               required class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tanggal Hijriah <span class="text-red-500">*</span></label>
+                        <input type="text" name="tanggal_hijriah" 
+                               value="{{ old('tanggal_hijriah', $suratMasuk->tanggal_hijriah) }}" 
+                               required placeholder="Contoh: 15 Ramadhan 1445"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nomor Surat <span class="text-red-500">*</span></label>
+                        <input type="text" name="nomor_surat" 
+                               value="{{ old('nomor_surat', $suratMasuk->nomor_surat) }}" 
+                               required class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Lampiran (text)</label>
+                        <input type="text" name="lampiran_text" 
+                               value="{{ old('lampiran_text', $suratMasuk->lampiran) }}"
+                               placeholder="Contoh: 5 Lembar"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nomor Surat Saudara</label>
+                        <input type="text" name="nomor_surat_saudara" 
+                               value="{{ old('nomor_surat_saudara', $suratMasuk->nomor_surat_saudara) }}"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tanggal Permohonan</label>
+                        <input type="date" name="tanggal_permohonan" 
+                               value="{{ old('tanggal_permohonan', $suratMasuk->tanggal_permohonan ? $suratMasuk->tanggal_permohonan->format('Y-m-d') : '') }}"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nama Kepala Bidang</label>
+                        <input type="text" name="nama_kepala_bidang" 
+                               value="{{ old('nama_kepala_bidang', $suratMasuk->nama_kepala_bidang) }}"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">NIP Kepala Bidang</label>
+                        <input type="text" name="nip_kepala_bidang" 
+                               value="{{ old('nip_kepala_bidang', $suratMasuk->nip_kepala_bidang) }}"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                </div>
+            </div>
+
+            {{-- Lampiran Section --}}
+            <div class="border-b border-gray-200 pb-4">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-lg font-semibold text-gray-700">Daftar Lampiran</h3>
+                    <button type="button" id="btnTambahLampiran" 
+                            class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
+                        + Tambah Lampiran
+                    </button>
+                </div>
+                
+                <div id="containerLampiran" class="space-y-4">
+                    <!-- Lampiran items will be added here dynamically -->
+                </div>
+            </div>
+
+            {{-- Action Buttons --}}
+            <div class="flex gap-2 pt-4">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                    Update
+                </button>
+                <a href="{{ route('admin.surat-masuk.show', $suratMasuk) }}" 
+                   class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+                    Batal
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let lampiranCounter = 0;
+
+        // Existing data dari server
+        const existingLampiran = @json($suratMasuk->lampiran_list);
+
+        document.getElementById('btnTambahLampiran').addEventListener('click', function() {
+            tambahLampiran();
+        });
+
+        function tambahLampiran(lampiranData = null) {
+            const container = document.getElementById('containerLampiran');
+            const lampiranIndex = lampiranCounter++;
+            
+            const lampiranDiv = document.createElement('div');
+            lampiranDiv.className = 'border border-gray-300 rounded p-4 lampiran-item';
+            lampiranDiv.dataset.index = lampiranIndex;
+            
+            lampiranDiv.innerHTML = `
+
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nomor Lampiran <span class="text-red-500">*</span></label>
+                        <input type="text" name="lampiran[${lampiranIndex}][nomor_lampiran]" 
+                               value="${lampiranData ? lampiranData.nomor_lampiran : ''}" 
+                               required class="w-full border border-blue-600 p-2 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tanggal Lampiran <span class="text-red-500">*</span></label>
+                        <input type="date" name="lampiran[${lampiranIndex}][tanggal_lampiran]" 
+                               value="${lampiranData ? lampiranData.tanggal_lampiran : ''}" 
+                               required class="w-full border border-blue-600 p-2 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nama Kepala Bidang Lampiran</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][nama_kabid_lampiran]"
+                               value="${lampiranData ? (lampiranData.nama_kabid_lampiran || '') : ''}"
+                               class="w-full border border-blue-600 p-2 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">NIP Kepala Bidang Lampiran</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][nip_kabid_lampiran]"
+                               value="${lampiranData ? (lampiranData.nip_kabid_lampiran || '') : ''}"
+                               class="w-full border border-blue-600 p-2 rounded text-sm">
+                    </div>
+                </div>
+
+                <div class="border-t pt-3">
+                    <div class="flex justify-between items-center mb-2">
+                        <h5 class="font-medium text-gray-600 text-sm">Daftar Siswa</h5>
+                        <button type="button" class="btn-tambah-siswa bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600"
+                                data-lampiran="${lampiranIndex}">
+                            + Tambah Siswa
+                        </button>
+                    </div>
+                    <div class="siswa-container-${lampiranIndex} space-y-2">
+                        <!-- Siswa items will be added here -->
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(lampiranDiv);
+            
+
+            
+            // Event listener untuk tambah siswa
+            lampiranDiv.querySelector('.btn-tambah-siswa').addEventListener('click', function() {
+                tambahSiswa(lampiranIndex);
+            });
+
+            // Jika ada data siswa existing, tambahkan
+            if (lampiranData && lampiranData.daftar_siswa && lampiranData.daftar_siswa.length > 0) {
+                lampiranData.daftar_siswa.forEach(siswa => {
+                    tambahSiswa(lampiranIndex, siswa);
+                });
+            }
+        }
+
+        function tambahSiswa(lampiranIndex, siswaData = null) {
+            const container = document.querySelector(`.siswa-container-${lampiranIndex}`);
+            const siswaIndex = container.children.length;
+            
+            const siswaDiv = document.createElement('div');
+            siswaDiv.className = 'bg-gray-50 p-3 rounded border border-gray-200 siswa-item';
+            
+            siswaDiv.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-medium text-gray-600">Siswa #${siswaIndex + 1}</span>
+                    <button type="button" class="btn-hapus-siswa text-red-500 hover:text-red-700 text-xs">
+                        <i class="fas fa-times"></i> Hapus
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                    <div>
+                        <label class="block text-xs text-gray-600">Nama Siswa <span class="text-red-500">*</span></label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][nama_siswa]" 
+                               value="${siswaData ? siswaData.nama_siswa : ''}" 
+                               required class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">TTL <span class="text-red-500">*</span></label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][ttl_siswa]" 
+                               value="${siswaData ? siswaData.ttl_siswa : ''}" 
+                               required placeholder="Jakarta, 01/01/2000"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">NISN</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][nisn]"
+                               value="${siswaData ? (siswaData.nisn || '') : ''}"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">Kelas Masuk</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][kelas_masuk]"
+                               value="${siswaData ? (siswaData.kelas_masuk || '') : ''}"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">Tahun Masuk</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][tahun_masuk]"
+                               value="${siswaData ? (siswaData.tahun_masuk || '') : ''}"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">Asal Sekolah</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][asal_sekolah]"
+                               value="${siswaData ? (siswaData.asal_sekolah || '') : ''}"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(siswaDiv);
+            
+            // Event listener untuk hapus siswa
+            siswaDiv.querySelector('.btn-hapus-siswa').addEventListener('click', function() {
+                if (confirm('Hapus siswa ini?')) {
+                    siswaDiv.remove();
+                    updateSiswaNumbers(lampiranIndex);
+                }
+            });
+        }
+
+        function updateLampiranNumbers() {
+            const lampiranItems = document.querySelectorAll('.lampiran-item');
+            lampiranItems.forEach((item, index) => {
+                item.querySelector('h4').textContent = `Lampiran #${index + 1}`;
+            });
+        }
+
+        function updateSiswaNumbers(lampiranIndex) {
+            const siswaItems = document.querySelectorAll(`.siswa-container-${lampiranIndex} .siswa-item`);
+            siswaItems.forEach((item, index) => {
+                item.querySelector('span').textContent = `Siswa #${index + 1}`;
+            });
+        }
+
+        // Load existing lampiran saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', function() {
+            if (existingLampiran && existingLampiran.length > 0) {
+                existingLampiran.forEach(lampiran => {
+                    const lampiranData = {
+                        nomor_lampiran: lampiran.nomor_lampiran,
+                        tanggal_lampiran: lampiran.tanggal_lampiran.split('T')[0], // Format untuk input date
+                        nama_kabid_lampiran: lampiran.nama_kabid_lampiran,
+                        nip_kabid_lampiran: lampiran.nip_kabid_lampiran,
+                        daftar_siswa: lampiran.daftar_siswa || []
+                    };
+                    tambahLampiran(lampiranData);
+                });
+            } else {
+                // Jika tidak ada lampiran existing, tambah 1 lampiran kosong
+                tambahLampiran();
+            }
+        });
+    </script>
+</x-layouts.app>

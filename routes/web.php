@@ -56,5 +56,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/school/{school}', [SchoolController::class, 'update'])->name('admin.school.update');
     Route::delete('/school/{school}', [SchoolController::class, 'destroy'])->name('admin.school.destroy');    
     Route::get('/settings',[AdminController::class, 'setting'])->name('admin.settings');
+
+    // Surat Masuk Routes
+    Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+        Route::resource('surat-masuk', \App\Http\Controllers\Admin\SuratMasukController::class);
+        Route::get('surat-masuk/{suratMasuk}/export', [\App\Http\Controllers\Admin\SuratMasukController::class, 'exportWord'])->name('surat-masuk.export');
+        Route::get('surat-masuk/{suratMasuk}/download/{type}', [\App\Http\Controllers\Admin\SuratMasukController::class, 'download'])->name('surat-masuk.download');
+    });
 });
 

@@ -166,6 +166,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a id="ijasa" href="{{ route('admin.surat-masuk.index') }}" 
+                               class="flex items-center px-4 py-3 text-gray-700 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 font-medium transition-all duration-200 group relative {{ request()->routeIs('admin.surat-masuk') ? 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 shadow-sm' : '' }}">
+                                <i class="fas fa-certificate text-xl w-6 group-hover:text-blue-600 {{ request()->routeIs('admin.surat-masuk') ? 'text-blue-600' : 'text-gray-400' }}"></i>
+                                <span class="nav-text ml-4">Surat Masuk</span>
+                                <span class="tooltip">Surat Masuk</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a id="ijasa" href="{{ route('admin.ijasah.index') }}" 
                                class="flex items-center px-4 py-3 text-gray-700 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 font-medium transition-all duration-200 group relative {{ request()->routeIs('admin.ijasah') ? 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 shadow-sm' : '' }}">
                                 <i class="fas fa-certificate text-xl w-6 group-hover:text-blue-600 {{ request()->routeIs('admin.ijasah') ? 'text-blue-600' : 'text-gray-400' }}"></i>
