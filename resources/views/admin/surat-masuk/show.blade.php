@@ -64,6 +64,29 @@
             </div>
         </div>
 
+        {{-- Informasi Tujuan Surat (Yth) --}}
+        <div class="bg-gradient-to-r from-indigo-50 to-indigo-100 border-l-4 border-indigo-600 rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-bold text-indigo-800 mb-4 flex items-center gap-2">
+                <i class="fas fa-building"></i>
+                Tujuan Surat (Yth)
+            </h3>
+            
+            <div class="grid grid-cols-1 gap-4">
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Yth. Nama Sekolah Tujuan</label>
+                    <p class="text-gray-800 font-semibold">{{ $suratMasuk->yth_nama_sekolah_tujuan ?? '-' }}</p>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Yth. Alamat Sekolah Tujuan</label>
+                    <p class="text-gray-800 font-semibold">{{ $suratMasuk->yth_alamat_sekolah_tujuan ?? '-' }}</p>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-sm">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Nama Sekolah Tujuan</label>
+                    <p class="text-gray-800 font-semibold">{{ $suratMasuk->nama_sekolah_tujuan ?? '-' }}</p>
+                </div>
+            </div>
+        </div>
+
         {{-- Daftar Lampiran --}}
         <div class="mb-6">
             <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">

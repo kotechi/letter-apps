@@ -19,6 +19,9 @@ class SuratMasuk extends Model
         'nip_kepala_bidang',
         'file_docx',
         'file_pdf',
+        'yth_nama_sekolah_tujuan',
+        'yth_alamat_sekolah_tujuan',
+        'nama_sekolah_tujuan',
     ];
 
     protected $casts = [

@@ -32,6 +32,9 @@ class SuratMasukController extends Controller
             'nomor_surat' => 'required|string',
             'nama_kepala_bidang' => 'nullable|string',
             'nip_kepala_bidang' => 'nullable|string',
+            'yth_nama_sekolah_tujuan' => 'nullable|string',
+            'yth_alamat_sekolah_tujuan' => 'nullable|string',
+            'nama_sekolah_tujuan' => 'nullable|string',
             
             'lampiran.*.nomor_lampiran' => 'required|string',
             'lampiran.*.tanggal_lampiran' => 'required|date',
@@ -55,6 +58,9 @@ class SuratMasukController extends Controller
                 'tanggal_permohonan' => $request->tanggal_permohonan ?? null,
                 'nama_kepala_bidang' => $request->nama_kepala_bidang ?? null,
                 'nip_kepala_bidang' => $request->nip_kepala_bidang ?? null,
+                'yth_nama_sekolah_tujuan' => $request->yth_nama_sekolah_tujuan ?? null,
+                'yth_alamat_sekolah_tujuan' => $request->yth_alamat_sekolah_tujuan ?? null,
+                'nama_sekolah_tujuan' => $request->nama_sekolah_tujuan ?? null,
             ]);
 
             // Create Lampiran and Siswa
@@ -123,6 +129,9 @@ class SuratMasukController extends Controller
                 'nomor_surat_saudara' => $request->nomor_surat_saudara ?? null,
                 'tanggal_permohonan' => $request->tanggal_permohonan ?? null,
                 'nama_kepala_bidang' => $request->nama_kepala_bidang ?? null,
+                'yth_nama_sekolah_tujuan' => $request->yth_nama_sekolah_tujuan ?? null,
+                'yth_alamat_sekolah_tujuan' => $request->yth_alamat_sekolah_tujuan ?? null,
+                'nama_sekolah_tujuan' => $request->nama_sekolah_tujuan ?? null,
                 'nip_kepala_bidang' => $request->nip_kepala_bidang ?? null,
             ]);
 
@@ -199,6 +208,9 @@ class SuratMasukController extends Controller
             'tanggal_permohonan' => $suratMasuk->tanggal_permohonan ? $suratMasuk->tanggal_permohonan->format('d F Y') : '-',
             'nama_kepala_bidang' => $suratMasuk->nama_kepala_bidang ?? '-',
             'nip_kepala_bidang' => $suratMasuk->nip_kepala_bidang ?? '-',
+            'yth_nama_sekolah_tujuan' => $suratMasuk->yth_nama_sekolah_tujuan ?? '-',
+            'yth_alamat_sekolah_tujuan' => $suratMasuk->yth_alamat_sekolah_tujuan ?? '-',
+            'nama_sekolah_tujuan' => $suratMasuk->nama_sekolah_tujuan ?? '-',
         ];
 
         // Prepare lampiran data

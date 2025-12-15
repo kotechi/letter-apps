@@ -110,11 +110,11 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-sm mb-1">Nama Kepsek dan Gelar</label>
+                            <label class="block text-sm mb-1">Nama Pejabat dan Gelar</label>
                             <input type="text" name="nama_kepsek" required class="w-full border border-blue-600 rounded px-3 py-2">
                         </div>
                         <div>
-                            <label class="block text-sm mb-1">NIP Kepsek</label>
+                            <label class="block text-sm mb-1">NIP Pejabat</label>
                             <input type="text" name="nip_kepsek" required class="w-full border border-blue-600 rounded px-3 py-2">
                         </div>
                     </div>

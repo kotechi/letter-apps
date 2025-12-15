@@ -63,20 +63,35 @@
                                class="w-full border border-blue-600 p-2 rounded">
                     </div>
                 </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Yth. Nama Sekolah Tujuan</label>
+                        <input type="text" name="yth_nama_sekolah_tujuan" value="{{ old('yth_nama_sekolah_tujuan') }}"
+                               placeholder="Contoh: Kepala Sekolah Dasar (SD) Negeri Loji 2"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Yth. Alamat Sekolah Tujuan</label>
+                        <input type="text" name="yth_alamat_sekolah_tujuan" value="{{ old('yth_alamat_sekolah_tujuan') }}"
+                               placeholder="Contoh: Jl. Raya Pendidikan No. 123, Jakarta Selatan"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700">Nama Sekolah Tujuan</label>
+                        <input type="text" name="nama_sekolah_tujuan" value="{{ old('nama_sekolah_tujuan') }}"
+                               placeholder="Contoh: SMK Negeri 1 Jakarta"
+                               class="w-full border border-blue-600 p-2 rounded">
+                    </div>
+                </div>
             </div>
 
             {{-- Lampiran Section --}}
             <div class="border-b border-gray-200 pb-4">
-                <div class="flex justify-between items-center mb-3">
-                    <h3 class="text-lg font-semibold text-gray-700">Daftar Lampiran</h3>
-                    <button type="button" id="btnTambahLampiran" 
-                            class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                        + Tambah Lampiran
-                    </button>
-                </div>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">Lampiran Surat</h3>
                 
                 <div id="containerLampiran" class="space-y-4">
-                    <!-- Lampiran items will be added here dynamically -->
+                    <!-- Lampiran will be here -->
                 </div>
             </div>
 
@@ -94,23 +109,14 @@
     </div>
 
     <script>
-        let lampiranCounter = 0;
-
-        document.getElementById('btnTambahLampiran').addEventListener('click', function() {
-            tambahLampiran();
-        });
-
-        function tambahLampiran() {
+        function renderLampiran() {
             const container = document.getElementById('containerLampiran');
-            const lampiranIndex = lampiranCounter++;
+            const lampiranIndex = 0; // Hanya 1 lampiran dengan index 0
             
             const lampiranDiv = document.createElement('div');
-            lampiranDiv.className = 'border border-gray-300 rounded p-4 lampiran-item';
-            lampiranDiv.dataset.index = lampiranIndex;
+            lampiranDiv.className = 'border border-gray-300 rounded p-4';
             
             lampiranDiv.innerHTML = `
-
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700">Nomor Lampiran <span class="text-red-500">*</span></label>
@@ -149,12 +155,6 @@
             `;
             
             container.appendChild(lampiranDiv);
-            
-            // Event listener untuk hapus lampiran
-            lampiranDiv.querySelector('.btn-hapus-lampiran').addEventListener('click', function() {
-                lampiranDiv.remove();
-                updateLampiranNumbers();
-            });
             
             // Event listener untuk tambah siswa
             lampiranDiv.querySelector('.btn-tambah-siswa').addEventListener('click', function() {
@@ -220,13 +220,6 @@
             });
         }
 
-        function updateLampiranNumbers() {
-            const lampiranItems = document.querySelectorAll('.lampiran-item');
-            lampiranItems.forEach((item, index) => {
-                item.querySelector('h4').textContent = `Lampiran #${index + 1}`;
-            });
-        }
-
         function updateSiswaNumbers(lampiranIndex) {
             const siswaItems = document.querySelectorAll(`.siswa-container-${lampiranIndex} .siswa-item`);
             siswaItems.forEach((item, index) => {
@@ -234,9 +227,9 @@
             });
         }
 
-        // Tambah 1 lampiran default saat halaman load
+        // Render lampiran saat halaman load
         window.addEventListener('DOMContentLoaded', function() {
-            tambahLampiran();
+            renderLampiran();
         });
     </script>
 </x-layouts.app>

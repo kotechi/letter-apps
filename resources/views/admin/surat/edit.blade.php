@@ -148,17 +148,17 @@
 
             {{-- Informasi Kepala Sekolah --}}
             <div class="border-b border-gray-200 pb-4">
-                <h3 class="text-lg font-semibold text-gray-700 mb-3">Kepala Sekolah</h3>
+                <h3 class="text-lg font-semibold text-gray-700 mb-3">Pejabat</h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Nama Kepala Sekolah</label>
+                        <label class="block text-sm font-medium text-gray-700">Nama Pejabat</label>
                         <input type="text" name="nama_kepsek" 
                                value="{{ old('nama_kepsek', $surat->nama_kepsek) }}" 
                                class="w-full border border-blue-600 p-2 rounded">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">NIP</label>
+                        <label class="block text-sm font-medium text-gray-700">NIP Pejabat</label>
                         <input type="text" name="nip_kepsek" 
                                value="{{ old('nip_kepsek', $surat->nip_kepsek) }}" 
                                class="w-full border border-blue-600 p-2 rounded">

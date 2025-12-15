@@ -32,6 +32,11 @@ class SuratMasukExportService
         $template->setValue('tanggal_permohonan', $data['tanggal_permohonan'] ?? '-');
         $template->setValue('nama_kepala_bidang', $data['nama_kepala_bidang'] ?? '-');
         $template->setValue('nip_kepala_bidang', $data['nip_kepala_bidang'] ?? '-');
+        
+        // Field Yth (Yang Terhormat)
+        $template->setValue('yth_nama_sekolah_tujuan', $data['yth_nama_sekolah_tujuan'] ?? '-');
+        $template->setValue('yth_alamat_sekolah_tujuan', $data['yth_alamat_sekolah_tujuan'] ?? '-');
+        $template->setValue('nama_sekolah_tujuan', $data['nama_sekolah_tujuan'] ?? '-');
 
         // Ambil lampiran dan siswa
         if (isset($data['lampiran_data'][0])) {
