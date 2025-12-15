@@ -200,12 +200,12 @@ class SuratMasukController extends Controller
         $suratMasuk->load('lampiran_list.daftarSiswa');
 
         $data = [
-            'tanggal_masehi' => $suratMasuk->tanggal_masehi->format('d F Y'),
+            'tanggal_masehi' => $suratMasuk->tanggal_masehi->locale('id')->translatedFormat('d F Y'),
             'tanggal_hijriah' => $suratMasuk->tanggal_hijriah,
             'nomor_surat' => $suratMasuk->nomor_surat,
             'lampiran' => $suratMasuk->lampiran ?? '-',
             'nomor_surat_saudara' => $suratMasuk->nomor_surat_saudara ?? '-',
-            'tanggal_permohonan' => $suratMasuk->tanggal_permohonan ? $suratMasuk->tanggal_permohonan->format('d F Y') : '-',
+            'tanggal_permohonan' => $suratMasuk->tanggal_permohonan ? $suratMasuk->tanggal_permohonan->locale('id')->translatedFormat('d F Y') : '-',
             'nama_kepala_bidang' => $suratMasuk->nama_kepala_bidang ?? '-',
             'nip_kepala_bidang' => $suratMasuk->nip_kepala_bidang ?? '-',
             'yth_nama_sekolah_tujuan' => $suratMasuk->yth_nama_sekolah_tujuan ?? '-',
@@ -231,7 +231,7 @@ class SuratMasukController extends Controller
 
             $lampiranData[] = [
                 'nomor_lampiran' => $lampiran->nomor_lampiran,
-                'tanggal_lampiran' => $lampiran->tanggal_lampiran->format('d F Y'),
+                'tanggal_lampiran' => $lampiran->tanggal_lampiran->locale('id')->translatedFormat('d F Y'),
                 'nama_kabid_lampiran' => $lampiran->nama_kabid_lampiran ?? '-',
                 'nip_kabid_lampiran' => $lampiran->nip_kabid_lampiran ?? '-',
                 'siswa' => $siswaData,

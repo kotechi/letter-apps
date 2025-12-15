@@ -28,7 +28,7 @@ class WordController extends Controller
             'kelas' => $siswa->kelas,
             'alamat' => optional($sekolah)->alamat ?? '',
             'tempat_lahir' => $siswa->tempat_lahir,
-            'tanggal_lahir' => $siswa->tanggal_lahir ? (string) $siswa->tanggal_lahir : '',
+            'tanggal_lahir' => $siswa->tanggal_lahir ? $siswa->tanggal_lahir->locale('id')->translatedFormat('d F Y') : '',
             'nisn' => $siswa->nisn,
             'nis' => $siswa->nis,
             'jenis_kelamin' => $siswa->jenis_kelamin,
