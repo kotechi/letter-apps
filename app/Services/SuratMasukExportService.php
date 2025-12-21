@@ -58,7 +58,8 @@ class SuratMasukExportService
                     
                     $template->setValue('no_siswa#' . $rowNum, $siswa['no'] ?? ($index + 1));
                     $template->setValue('nama_siswa#' . $rowNum, $siswa['nama_siswa'] ?? '-');
-                    $template->setValue('ttl_siswa#' . $rowNum, $siswa['ttl_siswa'] ?? '-');
+                    $template->setValue('tempat_lahir#' . $rowNum, $siswa['tempat_lahir'] ?? '-');
+                    $template->setValue('tanggal_lahir#' . $rowNum, $siswa['tanggal_lahir'] ?? '-');
                     $template->setValue('kelas_masuk#' . $rowNum, $siswa['kelas_masuk'] ?? '-');
                     $template->setValue('tahun_masuk#' . $rowNum, $siswa['tahun_masuk'] ?? '-');
                     $template->setValue('asal_sekolah#' . $rowNum, $siswa['asal_sekolah'] ?? '-');
@@ -68,7 +69,8 @@ class SuratMasukExportService
                 // Jika tidak ada siswa, set nilai default
                 $template->setValue('no_siswa', '-');
                 $template->setValue('nama_siswa', '-');
-                $template->setValue('ttl_siswa', '-');
+                $template->setValue('tempat_lahir', '-');
+                $template->setValue('tanggal_lahir', '-');
                 $template->setValue('kelas_masuk', '-');
                 $template->setValue('tahun_masuk', '-');
                 $template->setValue('asal_sekolah', '-');

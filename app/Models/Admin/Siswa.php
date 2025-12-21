@@ -22,6 +22,10 @@ class Siswa extends Model
         'tanggal_lahir',
     ];
 
+    protected $casts = [
+        'tanggal_lahir' => 'date',
+    ];
+
     public function school()
     {
         return $this->belongsTo(School::class, 'asal_sekolah');

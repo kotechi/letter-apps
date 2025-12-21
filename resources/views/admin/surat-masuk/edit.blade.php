@@ -210,10 +210,16 @@
                                required class="w-full border border-gray-300 p-1 rounded text-sm">
                     </div>
                     <div>
-                        <label class="block text-xs text-gray-600">TTL <span class="text-red-500">*</span></label>
-                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][ttl_siswa]" 
-                               value="${siswaData ? siswaData.ttl_siswa : ''}" 
-                               required placeholder="Jakarta, 01/01/2000"
+                        <label class="block text-xs text-gray-600">Tempat Lahir</label>
+                        <input type="text" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][tempat_lahir]" 
+                               value="${siswaData ? (siswaData.tempat_lahir || '') : ''}" 
+                               placeholder="Jakarta"
+                               class="w-full border border-gray-300 p-1 rounded text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-600">Tanggal Lahir</label>
+                        <input type="date" name="lampiran[${lampiranIndex}][siswa][${siswaIndex}][tanggal_lahir]"
+                               value="${siswaData ? (siswaData.tanggal_lahir || '') : ''}"
                                class="w-full border border-gray-300 p-1 rounded text-sm">
                     </div>
                     <div>

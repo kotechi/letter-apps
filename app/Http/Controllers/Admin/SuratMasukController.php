@@ -42,7 +42,8 @@ class SuratMasukController extends Controller
             'lampiran.*.nip_kabid_lampiran' => 'nullable|string',
             
             'lampiran.*.siswa.*.nama_siswa' => 'required|string',
-            'lampiran.*.siswa.*.ttl_siswa' => 'required|string',
+            'lampiran.*.siswa.*.tempat_lahir' => 'nullable|string',
+            'lampiran.*.siswa.*.tanggal_lahir' => 'nullable|date',
             'lampiran.*.siswa.*.nisn' => 'nullable|string',
         ]);
 
@@ -79,7 +80,8 @@ class SuratMasukController extends Controller
                             DaftarSiswaLampiran::create([
                                 'no' => $index + 1,
                                 'nama_siswa' => $siswaData['nama_siswa'],
-                                'ttl_siswa' => $siswaData['ttl_siswa'],
+                                'tempat_lahir' => $siswaData['tempat_lahir'] ?? null,
+                                'tanggal_lahir' => $siswaData['tanggal_lahir'] ?? null,
                                 'kelas_masuk' => $siswaData['kelas_masuk'] ?? null,
                                 'tahun_masuk' => $siswaData['tahun_masuk'] ?? null,
                                 'asal_sekolah' => $siswaData['asal_sekolah'] ?? null,
@@ -157,7 +159,8 @@ class SuratMasukController extends Controller
                             DaftarSiswaLampiran::create([
                                 'no' => $index + 1,
                                 'nama_siswa' => $siswaData['nama_siswa'],
-                                'ttl_siswa' => $siswaData['ttl_siswa'],
+                                'tempat_lahir' => $siswaData['tempat_lahir'] ?? null,
+                                'tanggal_lahir' => $siswaData['tanggal_lahir'] ?? null,
                                 'kelas_masuk' => $siswaData['kelas_masuk'] ?? null,
                                 'tahun_masuk' => $siswaData['tahun_masuk'] ?? null,
                                 'asal_sekolah' => $siswaData['asal_sekolah'] ?? null,
@@ -221,7 +224,8 @@ class SuratMasukController extends Controller
                 $siswaData[] = [
                     'no' => $siswa->no,
                     'nama_siswa' => $siswa->nama_siswa,
-                    'ttl_siswa' => $siswa->ttl_siswa,
+                    'tempat_lahir' => $siswa->tempat_lahir ?? '-',
+                    'tanggal_lahir' => $siswa->tanggal_lahir ? $siswa->tanggal_lahir->locale('id')->translatedFormat('d F Y') : '-',
                     'kelas_masuk' => $siswa->kelas_masuk ?? '-',
                     'tahun_masuk' => $siswa->tahun_masuk ?? '-',
                     'asal_sekolah' => $siswa->asal_sekolah ?? '-',

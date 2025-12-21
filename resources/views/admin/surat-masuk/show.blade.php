@@ -137,7 +137,8 @@
                                         <tr>
                                             <th class="py-3 px-4 text-left text-xs font-semibold uppercase">No</th>
                                             <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Nama Siswa</th>
-                                            <th class="py-3 px-4 text-left text-xs font-semibold uppercase">TTL</th>
+                                            <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Tempat Lahir</th>
+                                            <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Tanggal Lahir</th>
                                             <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Kelas Masuk</th>
                                             <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Tahun Masuk</th>
                                             <th class="py-3 px-4 text-left text-xs font-semibold uppercase">Asal Sekolah</th>
@@ -149,7 +150,8 @@
                                             <tr class="hover:bg-blue-50 transition">
                                                 <td class="py-3 px-4 text-sm">{{ $siswa->no }}</td>
                                                 <td class="py-3 px-4 text-sm font-medium text-gray-900">{{ $siswa->nama_siswa }}</td>
-                                                <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->ttl_siswa }}</td>
+                                                <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->tempat_lahir ?? '-' }}</td>
+                                                <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->tanggal_lahir ? $siswa->tanggal_lahir->locale('id')->translatedFormat('j F Y') : '-' }}</td>
                                                 <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->kelas_masuk ?? '-' }}</td>
                                                 <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->tahun_masuk ?? '-' }}</td>
                                                 <td class="py-3 px-4 text-sm text-gray-700">{{ $siswa->asal_sekolah ?? '-' }}</td>

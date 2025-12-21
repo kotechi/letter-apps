@@ -11,12 +11,17 @@ class DaftarSiswaLampiran extends Model
     protected $fillable = [
         'no',
         'nama_siswa',
-        'ttl_siswa',
+        'tempat_lahir',
+        'tanggal_lahir',
         'kelas_masuk',
         'tahun_masuk',
         'asal_sekolah',
         'nisn',
         'lampiran_id',
+    ];
+
+    protected $casts = [
+        'tanggal_lahir' => 'date',
     ];
 
     public function lampiran()
