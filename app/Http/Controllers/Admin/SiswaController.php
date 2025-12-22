@@ -40,7 +40,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => ['required', Rule::in(['laki-laki','perempuan','L','P','male','female'])],
             'asal_sekolah' => 'required',
             'nisn' => 'required|string|max:50|unique:siswas,nisn',
-            'nis' => 'required|string|max:50|unique:siswas,nis',
+            'nis' => 'nullable|string|max:50|unique:siswas,nis',
             'tempat_lahir' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
         ]);
@@ -70,7 +70,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => ['required', Rule::in(['laki-laki','perempuan','L','P','male','female'])],
             'asal_sekolah' => 'required',
             'nisn' => ['required','string','max:50', Rule::unique('siswas','nisn')->ignore($siswa->id)],
-            'nis' => ['required','string','max:50', Rule::unique('siswas','nis')->ignore($siswa->id)],
+            'nis' => ['nullable','string','max:50', Rule::unique('siswas','nis')->ignore($siswa->id)],
             'tempat_lahir' => 'required|string|max:255',
             'tanggal_lahir' => 'required|date',
         ]);

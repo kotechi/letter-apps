@@ -55,7 +55,7 @@
             </div>
             <div>
                 <label class="block text-sm">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir', $siswa->tanggal_lahir) }}" class="w-full border p-2 rounded">
+                <input type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir', $siswa->tanggal_lahir?->format('Y-m-d')) }}" class="w-full border p-2 rounded">
             </div>
 
             <div>
